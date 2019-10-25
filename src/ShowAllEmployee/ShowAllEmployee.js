@@ -24,7 +24,6 @@ class ShowAllEmployee extends React.Component {
     
     alert(url);
     //call the update service
-    //test
   }
 
   componentDidMount() {
