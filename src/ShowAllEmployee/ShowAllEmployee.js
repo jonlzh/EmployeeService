@@ -13,7 +13,6 @@ class ShowAllEmployee extends React.Component {
   }
 
   handleUpdateEmployee(event) {
-    // http://localhost:8080/EmployeeService/rest/EmployeeService/Update/{employee_id}/{fname}/{lname}/{email}/{contact}/{role}/{department}/{deleted}
     var url = "http://localhost:8080/EmployeeService/rest/EmployeeService/Update/" +
       event.target.employee_id.value + "/" +
       event.target.fname.value + "/" +
@@ -24,6 +23,7 @@ class ShowAllEmployee extends React.Component {
       event.target.deleted.value;
     
     alert(url);
+    //call the update service
   }
 
   componentDidMount() {

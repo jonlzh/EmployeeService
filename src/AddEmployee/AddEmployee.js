@@ -15,7 +15,6 @@ class AddEmployee extends React.Component {
 
     //event handler
     handleAddEmployee(event) {
-        // http://localhost:8080/EmployeeService/rest/EmployeeService/Add/{fname}/{lname}/{email}/{contact}/{role}/{password}
         var url = "http://localhost:8080/EmployeeService/rest/EmployeeService/Add/" +
             event.target.fname.value + "/" +
             event.target.lname.value + "/" +
@@ -28,7 +27,6 @@ class AddEmployee extends React.Component {
 
     render() {
         return (
-
             <div>
                 <form onSubmit={this.handleAddEmployee}>
                     First Name: <input type='text' name='fname' /><br />
