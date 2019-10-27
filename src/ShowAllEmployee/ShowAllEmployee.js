@@ -1,5 +1,5 @@
 import React from 'react'
-
+import RedirectUrl from '../RedirectUrl/RedirectUrl';
 class ShowAllEmployee extends React.Component {
 
   constructor(props) {
@@ -21,7 +21,7 @@ class ShowAllEmployee extends React.Component {
       event.target.contact.value + "/" +
       event.target.role.value + "/" +
       event.target.deleted.value;
-    
+
     alert(url);
     //call the update service
   }
@@ -49,16 +49,17 @@ class ShowAllEmployee extends React.Component {
     return (
 
       <div>
+        <RedirectUrl/>
         {this.state.EmployeesArray.map((employee) => (
           <form onSubmit={this.handleUpdateEmployee}>
             <input type="text" name="employee_id" key={employee.employee_id.string} id={employee.employee_id.string} value={employee.employee_id.string} readOnly />&emsp;
-                  <input type="text" name="fname" defaultValue={employee.fname.string}/>&emsp;
-                  <input type="text" name="lname" defaultValue={employee.lname.string}/>&emsp;
-                  <input type="text" name="email" defaultValue={employee.email.string}/>&emsp;
-                  <input type="text" name="contact" defaultValue={employee.contact.string}/>&emsp;
-                  <input type="text" name="role" defaultValue={employee.role.string}/>&emsp;
-                  <input type="text" name="department" defaultValue={employee.department.string}/>&emsp;
-                  <input type="text" name="deleted" defaultValue={employee.deleted.string}/>&emsp;
+                  <input type="text" name="fname" defaultValue={employee.fname.string} />&emsp;
+                  <input type="text" name="lname" defaultValue={employee.lname.string} />&emsp;
+                  <input type="text" name="email" defaultValue={employee.email.string} />&emsp;
+                  <input type="text" name="contact" defaultValue={employee.contact.string} />&emsp;
+                  <input type="text" name="role" defaultValue={employee.role.string} />&emsp;
+                  <input type="text" name="department" defaultValue={employee.department.string} />&emsp;
+                  <input type="text" name="deleted" defaultValue={employee.deleted.string} />&emsp;
                   <button type="submit">Update</button>
           </form>
         ))}

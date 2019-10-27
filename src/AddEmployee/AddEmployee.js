@@ -1,4 +1,5 @@
 import React from 'react'
+import RedirectUrl from '../RedirectUrl/RedirectUrl';
 
 class AddEmployee extends React.Component {
 
@@ -28,6 +29,7 @@ class AddEmployee extends React.Component {
     render() {
         return (
             <div>
+                <RedirectUrl/>
                 <form onSubmit={this.handleAddEmployee}>
                     First Name: <input type='text' name='fname' /><br />
                     Last Name: <input type='text' name='lname' /><br />
