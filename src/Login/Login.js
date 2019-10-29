@@ -1,16 +1,7 @@
 import React from 'react'
-import {
-    withRouter,
-    Redirect,
-    BrowserRouter,
-    Switch,
-    Route,
-    Link,
-    useHistory,
-    useLocation
-} from "react-router-dom";
-import ShowAllEmployee from '../ShowAllEmployee/ShowAllEmployee';
-
+import { Redirect } from "react-router-dom";
+// import ShowAllEmployee from '../ShowAllEmployee/ShowAllEmployee';
+import ShowOwnDetails from '../ShowOwnDetails/ShowOwnDetails';
 class Login extends React.Component {
 
     constructor(props) {
@@ -18,12 +9,14 @@ class Login extends React.Component {
 
         this.state = {
             redirect: false,
-            msg: "",
             email: "",
             password: "",
+            EmployeesArray: [],
         }
 
         //must bind the event handlers to use it
+        //have to use this way instead of the form onSubmit method as 
+        //onSubmit method will override the url with the input value
         this.handleLogin = this.handleLogin.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
@@ -57,12 +50,24 @@ class Login extends React.Component {
         let url = newURL;
         fetch(url, reqOptions)
             // .then(res => res.text())          // convert to plain text
-            // .then(text => console.log(text))  // then log it out
+            // .then(text => console.log("asd: " + text))  // then log it out
             .then(res => res.json())
             .then((data) => {
-                this.setState({ EmployeesArray: data });
-                // alert(url);
-                this.setState({ redirect: true });
+                try 
+                {
+                    if (data[0].msg.string === "Retry!") {
+                        alert("retry");
+                    }
+                    else if(data[0].msg.string === "Login Success!")
+                    {
+
+                    }
+                } catch (error) {
+                        this.setState({ EmployeesArray: data });
+                        this.setState({ redirect : true});
+                        return (<ShowOwnDetails EmployeeArray={this.state.EmployeesArray} />)
+                }
+
             })
             .catch(console.log);
     }
@@ -70,15 +75,14 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                    {this.renderRedirect()}
-                    <h2>Login</h2>
-                    <form>
-                        <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.handleEmail} /><br />
-                        <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handlePassword} /><br />
-                        <button type="button" onClick={this.handleLogin}>Login</button>
-                    </form>
-                    <div>
-                    </div>
+                {this.renderRedirect()}
+                <h2>Login</h2>
+                <form>
+                    <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.handleEmail} /><br />
+                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handlePassword} /><br />
+                    <button type="button" onClick={this.handleLogin}>Login</button>
+                </form>
+
             </div>
         );
     }

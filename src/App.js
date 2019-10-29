@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 import ShowAllEmployee from './ShowAllEmployee/ShowAllEmployee';
+import ShowOwnDetails from './ShowOwnDetails/ShowOwnDetails';
 import Login from './Login/Login';
 import AddEmployee from './AddEmployee/AddEmployee';
 import DeleteEmployee from './DeleteEmployee/DeleteEmployee';
-// import RedirectUrl from './RedirectUrl/RedirectUrl';
 import {
   withRouter,
   Redirect,
@@ -38,6 +38,7 @@ class App extends React.Component {
             <Route exact strict path="/" render={() => <Login />} />
             <Route exact strict path="/add" component={AddEmployee} />
             <Route exact strict path="/delete" component={DeleteEmployee} />
+            <Route exact strict path="/own" component={ShowOwnDetails} />
           </Switch>
       </div>
     );
