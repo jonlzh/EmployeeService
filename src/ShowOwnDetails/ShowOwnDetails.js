@@ -37,7 +37,7 @@ class ShowOwnDetails extends React.Component {
       <div>
         <RedirectUrl/>
         {this.state.EmployeesArray.map((employee) => (
-          <p>
+          <p key={employee.email.string}>
             First Name: {employee.fname.string}<br/>
             Last name: {employee.lname.string}<br/>
             Email: {employee.email.string}<br/>

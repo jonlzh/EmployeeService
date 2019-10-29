@@ -31,7 +31,7 @@ class Login extends React.Component {
     }
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to='/index' />
+            return <Redirect to='/own' />
         }
     }
     handleLogin(event) {
@@ -60,12 +60,12 @@ class Login extends React.Component {
                     }
                     else if(data[0].msg.string === "Login Success!")
                     {
-
-                    }
-                } catch (error) {
                         this.setState({ EmployeesArray: data });
                         this.setState({ redirect : true});
-                        return (<ShowOwnDetails EmployeeArray={this.state.EmployeesArray} />)
+                        //parse value to showowndetails so they can render
+                    }
+                } catch (error) {
+                    console.log(error);
                 }
 
             })
