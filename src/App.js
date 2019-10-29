@@ -22,7 +22,6 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      EmployeesArray: [],
     }
   }
 
@@ -30,9 +29,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <Login /> */}
-        {/* <AddEmployee /> */}
-        {/* <ShowAllEmployee/> */}
           <Switch>
             <Route exact strict path="/index" component={ShowAllEmployee} />
             <Route exact strict path="/" render={() => <Login />} />

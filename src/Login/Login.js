@@ -1,7 +1,5 @@
 import React from 'react'
 import { Redirect } from "react-router-dom";
-// import ShowAllEmployee from '../ShowAllEmployee/ShowAllEmployee';
-import ShowOwnDetails from '../ShowOwnDetails/ShowOwnDetails';
 class Login extends React.Component {
 
     constructor(props) {
@@ -11,18 +9,25 @@ class Login extends React.Component {
             redirect: false,
             email: "",
             password: "",
-            EmployeesArray: [],
+            msg: "",
         }
 
         //must bind the event handlers to use it
-        //have to use this way instead of the form onSubmit method as 
-        //onSubmit method will override the url with the input value
+        //have to use this way instead of the form onSubmit method as
+        //onSubmit method will override the url with the input value making it not redirect properly
         this.handleLogin = this.handleLogin.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
     }
 
     //event handler
+    clearData(){
+        this.setState({
+            email: "",
+            password: "",
+            msg: "",
+        })
+    }
     handleEmail(event) {
         this.setState({ email: event.target.value });
     }
@@ -31,7 +36,13 @@ class Login extends React.Component {
     }
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to='/own' />
+            //pathname to set the path to be redirect to
+            //state: to pass the email value to ShowOwnDetails.js
+            return <Redirect to={{
+                pathname: '/own',
+                state: { email: this.state.email }
+            }}
+            />
         }
     }
     handleLogin(event) {
@@ -55,16 +66,18 @@ class Login extends React.Component {
             .then((data) => {
                 try 
                 {
-                    if (data[0].msg.string === "Retry!") {
-                        alert("retry");
-                    }
-                    else if(data[0].msg.string === "Login Success!")
+                    if (data[0].msg.string === "Login Success!") 
                     {
-                        this.setState({ EmployeesArray: data });
-                        this.setState({ redirect : true});
-                        //parse value to showowndetails so they can render
+                        this.setState({ redirect: true });
                     }
-                } catch (error) {
+                    else if (data[0].msg.string === "Retry!"){
+                        this.clearData();
+                        this.setState ({ msg: data[0].msg.string });
+                    }
+                } catch (error) 
+                {
+                    this.clearData();
+                    this.setState({ msg: "Fields cannot be blanks!" });
                     console.log(error);
                 }
 
@@ -81,6 +94,7 @@ class Login extends React.Component {
                     <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.handleEmail} /><br />
                     <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handlePassword} /><br />
                     <button type="button" onClick={this.handleLogin}>Login</button>
+                    <p>{this.state.msg}</p>
                 </form>
 
             </div>

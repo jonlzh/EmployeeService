@@ -13,6 +13,7 @@ class ShowAllEmployee extends React.Component {
   }
 
   handleUpdateEmployee(event) {
+    //event.target.employee_id.value can be used to get the value of the textbox
     var url = "http://localhost:8080/EmployeeService/rest/EmployeeService/Update/" +
       event.target.employee_id.value + "/" +
       event.target.fname.value + "/" +

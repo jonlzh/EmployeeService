@@ -21,7 +21,9 @@ class ShowOwnDetails extends React.Component {
         'Origin': '*'
       }
     };
-    let url = "http://localhost:8080/EmployeeService/rest/EmployeeService/OwnDetails/ali@gmail.com/";
+    // this.props.location.state.email to get the email from Login.js
+    let url = "http://localhost:8080/EmployeeService/rest/EmployeeService/OwnDetails/" + this.props.location.state.email;
+    console.log("aaa:" + url);
     fetch(url, reqOptions)
       // .then(res => res.text())          // convert to plain text
       // .then(text => console.log(text))  // then log it out
