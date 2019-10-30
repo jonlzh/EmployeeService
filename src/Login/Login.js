@@ -39,7 +39,7 @@ class Login extends React.Component {
             //pathname to set the path to be redirect to
             //state: to pass the email value to ShowOwnDetails.js
             return <Redirect to={{
-                pathname: '/own',
+                pathname: '/index',
                 state: { email: this.state.email }
             }}
             />

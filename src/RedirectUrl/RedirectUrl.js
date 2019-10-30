@@ -16,17 +16,17 @@ class RedirectUrl extends React.Component {
       <div>
         <ul>
           <li>
-            <Link to="/index">Show All Employee</Link>
+            <Link to="/add">Add Employee</Link>
           </li>
           <li>
-            <Link to="/add">Add Employee</Link>
+            <Link to="/update">Update Employee</Link>
           </li>
           <li>
             <Link to="/delete">Delete Employee</Link>
           </li>
-          <li>
-            <Link to="/own">own details</Link>
-          </li>
+          {/* <li>
+            <Link to="/index">Own details</Link>
+          </li> */}
         </ul>
       </div>
     );

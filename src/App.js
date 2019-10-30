@@ -30,11 +30,11 @@ class App extends React.Component {
     return (
       <div>
           <Switch>
-            <Route exact strict path="/index" component={ShowAllEmployee} />
+            <Route exact strict path="/update" component={ShowAllEmployee} />
             <Route exact strict path="/" render={() => <Login />} />
             <Route exact strict path="/add" component={AddEmployee} />
             <Route exact strict path="/delete" component={DeleteEmployee} />
-            <Route exact strict path="/own" component={ShowOwnDetails} />
+            <Route exact strict path="/index" component={ShowOwnDetails} />
           </Switch>
       </div>
     );

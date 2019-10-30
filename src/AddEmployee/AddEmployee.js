@@ -109,8 +109,8 @@ class AddEmployee extends React.Component {
                     Role: <input type='text' name='role' value={this.state.role} onChange={this.handleRole}/><br/>
                     Password: <input type='password' name='password' value={this.state.password} onChange={this.handlePassword}/><br />
                     <button type="button" onClick={this.handleAddEmployee}>Add</button><input type="reset" />
-                    <p>{this.state.msg}</p>
                 </form>
+                <p>{this.state.msg}</p>
             </div>
         );
     }
